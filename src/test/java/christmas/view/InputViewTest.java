@@ -18,7 +18,7 @@ import util.MyTest;
 
 class InputViewTest extends MyTest {
 
-    InputView inputView = new InputView(new InputValidator());
+    InputView inputView = new InputView();
 
     @DisplayName("방문 날짜 입력")
     @Nested
