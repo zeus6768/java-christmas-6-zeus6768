@@ -3,15 +3,16 @@ package christmas.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static christmas.view.exception.InputExceptionMessage.INVALID_DATE;
-import static christmas.view.exception.InputExceptionMessage.INVALID_ORDER;
+import static christmas.domain.VisitDate.FIRST_DAY_OF_MONTH;
+import static christmas.domain.VisitDate.LAST_DAY_OF_MONTH;
+import static christmas.view.input.exception.InputExceptionMessage.INVALID_DATE;
+import static christmas.view.input.exception.InputExceptionMessage.INVALID_ORDER;
 import static util.MyChristmasTest.setInput;
 
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,18 +23,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import christmas.domain.VisitDate;
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.Order;
-import christmas.view.exception.InputExceptionHandler;
+import christmas.domain.menu.Menus;
+import christmas.view.input.InputView;
+import christmas.view.input.exception.InputExceptionHandler;
 
 class InputViewTest {
 
+    Menus menus = new Menus();
     InputView inputView = new InputView(new InputExceptionHandler());
-
-    @BeforeAll
-    static void setMenu() {
-        Menu.init();
-    }
 
     @AfterEach
     void closeInput() {
@@ -62,8 +59,10 @@ class InputViewTest {
         }
 
         private static Stream<Arguments> inputVisitDate() {
-            return IntStream.range(1, 32)
-                    .mapToObj(number -> Arguments.of(String.valueOf(number), number));
+            return IntStream.range(FIRST_DAY_OF_MONTH, LAST_DAY_OF_MONTH)
+                    .mapToObj(number ->
+                            Arguments.of(String.valueOf(number), number)
+                    );
         }
 
         @DisplayName("숫자가 아닌 값을 입력하면 오류 메시지를 출력하고 재입력한다.")
@@ -146,6 +145,18 @@ class InputViewTest {
                         "초코케이크-1,샴페인--3",
                         "제로콜라,레드와인,샴페인",
                         "샴페인-,-,-,제로콜라,,-",
+                        EXIT_INPUT
+                );
+                assertThat(output())
+                        .contains(INVALID_ORDER);
+            });
+        }
+
+        @DisplayName("메뉴 개수의 합이 20개를 초과하면 오류 메시지를 출력하고 재입력한다.")
+        @Test
+        void inputOrderByExceededMenuCount() {
+            assertSimpleTest(() -> {
+                run("타파스-10,제로콜라-10,양송이스프-1,시저샐러드-1",
                         EXIT_INPUT
                 );
                 assertThat(output())
