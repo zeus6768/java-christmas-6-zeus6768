@@ -2,6 +2,9 @@ package christmas.domain;
 
 public class VisitDate {
 
+    public static final int FIRST_DAY_OF_MONTH = 1;
+    public static final int LAST_DAY_OF_MONTH = 31;
+
     private final int date;
 
     private VisitDate(int date) {
@@ -20,7 +23,7 @@ public class VisitDate {
     }
 
     private boolean isOutOfRange(int date) {
-        return date < 1 || date > 31;
+        return date < FIRST_DAY_OF_MONTH || date > LAST_DAY_OF_MONTH;
     }
 
     public int getDate() {
