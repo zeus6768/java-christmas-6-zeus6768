@@ -14,10 +14,6 @@ public enum Drink implements Menu {
         this.price = price;
     }
 
-    public static void init() {
-        Menu.putMenus(values());
-    }
-
     @Override
     public String getKoreanName() {
         return koreanName;
