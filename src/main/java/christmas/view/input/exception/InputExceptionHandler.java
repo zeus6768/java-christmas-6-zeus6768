@@ -1,4 +1,4 @@
-package christmas.view.exception;
+package christmas.view.input.exception;
 
 import java.util.NoSuchElementException;
 import java.util.function.Supplier;

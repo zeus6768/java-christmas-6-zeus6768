@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.input;
 
 public class InputConstant {
     protected static final String DELIMITER_COMMA = ",";

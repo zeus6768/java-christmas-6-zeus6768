@@ -1,25 +1,26 @@
-package christmas.view;
+package christmas.view.input;
 
 import static java.util.stream.Collectors.toMap;
 
-import static christmas.view.InputConstant.COUNT_INDEX;
-import static christmas.view.InputConstant.DELIMITER_COMMA;
-import static christmas.view.InputConstant.DELIMITER_HYPHEN;
-import static christmas.view.InputConstant.MENU_AND_COUNT_SPLIT_LENGTH;
-import static christmas.view.InputConstant.MENU_INDEX;
-import static christmas.view.InputMessage.ASK_ORDER;
-import static christmas.view.InputMessage.ASK_VISIT_DATE;
-import static christmas.view.exception.InputExceptionMessage.INVALID_DATE;
-import static christmas.view.exception.InputExceptionMessage.INVALID_ORDER;
+import static christmas.view.input.InputConstant.COUNT_INDEX;
+import static christmas.view.input.InputConstant.DELIMITER_COMMA;
+import static christmas.view.input.InputConstant.DELIMITER_HYPHEN;
+import static christmas.view.input.InputConstant.MENU_AND_COUNT_SPLIT_LENGTH;
+import static christmas.view.input.InputConstant.MENU_INDEX;
+import static christmas.view.input.InputMessage.ASK_ORDER;
+import static christmas.view.input.InputMessage.ASK_VISIT_DATE;
+import static christmas.view.input.exception.InputExceptionMessage.INVALID_DATE;
+import static christmas.view.input.exception.InputExceptionMessage.INVALID_ORDER;
 
 import java.util.Map;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.VisitDate;
+import christmas.domain.eventplanner.Order;
 import christmas.domain.menu.Menu;
-import christmas.domain.menu.Order;
-import christmas.view.exception.InputExceptionHandler;
+import christmas.domain.menu.Menus;
+import christmas.view.input.exception.InputExceptionHandler;
 
 public class InputView {
 
@@ -48,7 +49,7 @@ public class InputView {
         Map<Menu, Integer> order = Stream.of(menuAndCounts)
                 .map(menuAndCount -> menuAndCount.split(DELIMITER_HYPHEN, MENU_AND_COUNT_SPLIT_LENGTH))
                 .collect(toMap(
-                        menuAndCount -> Menu.find(menuAndCount[MENU_INDEX]),
+                        menuAndCount -> Menus.find(menuAndCount[MENU_INDEX]),
                         menuAndCount -> Integer.parseInt(menuAndCount[COUNT_INDEX])
                 ));
         return Order.from(order);
