@@ -21,5 +21,6 @@ public class ChristmasController {
         Order order = inputView.askOrder();
         outputView.printBenefitPreviewGuide(visitDate);
         outputView.printOrders(order);
+        int totalPriceBeforeDiscount = order.totalPrice();
     }
 }

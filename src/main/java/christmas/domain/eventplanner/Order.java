@@ -55,4 +55,14 @@ public class Order {
     public Stream<Entry<Menu, Integer>> stream() {
         return order.entrySet().stream();
     }
+
+    public int totalPrice() {
+        return stream()
+                .mapToInt(menuAndCount -> {
+                            Menu menu = menuAndCount.getKey();
+                            int count = menuAndCount.getValue();
+                            return menu.getPrice() * count;
+                        })
+                .sum();
+    }
 }
