@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import christmas.domain.menu.Menus;
@@ -11,6 +12,7 @@ import util.MyChristmasTest;
 
 class OrderTest extends MyChristmasTest {
 
+    @DisplayName("할인 전 총주문금액을 계산한다.")
     @Test
     void totalPriceTest() {
         // given
