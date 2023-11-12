@@ -31,10 +31,10 @@ class EventPlannerTest extends MyChristmasTest {
         Order order = Order.from(menuAndCounts);
 
         // when
-        Menu menu = eventPlanner.gift(order);
+        Gift gift = eventPlanner.gift(order);
 
         // then
-        assertThat(menu).isEqualTo(expected);
+        assertThat(gift.getMenu()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> giftTest() {
