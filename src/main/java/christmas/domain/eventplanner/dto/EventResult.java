@@ -41,10 +41,10 @@ public class EventResult {
     }
 
     public boolean hasBenefit() {
-        return sumBenefits() != 0;
+        return totalBenefit() != 0;
     }
 
-    public int sumBenefits() {
+    public int totalBenefit() {
         return eventBenefit.values().stream().mapToInt(i -> i).sum();
     }
 
