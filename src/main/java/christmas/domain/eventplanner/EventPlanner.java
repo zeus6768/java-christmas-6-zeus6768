@@ -16,6 +16,7 @@ import static christmas.domain.menu.Menu.NOT_EXISTS;
 
 import java.util.function.Predicate;
 
+import christmas.domain.eventplanner.dto.EventPlan;
 import christmas.domain.eventplanner.dto.EventResult;
 import christmas.domain.eventplanner.dto.Gift;
 import christmas.domain.menu.Dessert;
@@ -27,65 +28,69 @@ public class EventPlanner {
     private VisitDate visitDate;
     private Order order;
 
-    public void plan(VisitDate visitDate, Order order) {
+    public EventPlan plan(VisitDate visitDate, Order order) {
         this.visitDate = visitDate;
         this.order = order;
+        return EventPlan.of(
+                visitDate,
+                order,
+                order.totalPrice(),
+                gift(),
+                eventResult(),
+                totalPriceAfterDiscount()
+        );
     }
 
-    public Gift gift(Order order) {
+    private Gift gift() {
         if (order.totalPrice() >= GIFT_EVENT_TOTAL_MIN) {
             return Gift.of(CHAMPAGNE, GIFT_EVENT_QUANTITY);
         }
         return Gift.of(NOT_EXISTS, 0);
     }
 
-    public EventResult applyEvents() {
+    private EventResult eventResult() {
         return EventResult.of(
-                getGiftBenefit(),
-                getChristmasEventBenefit(),
-                getWeekdayEventBenefit(),
-                getWeekendEventBenefit(),
-                getSpecialEventBenefit()
+                gift().getTotal(),
+                christmasEventBenefit(),
+                weekdayEventBenefit(),
+                weekendEventBenefit(),
+                specialEventBenefit()
         );
     }
 
-    public int totalPriceAfterDiscount() {
-        return order.totalPrice() - (applyEvents().totalBenefit() - getGiftBenefit());
+    private int totalPriceAfterDiscount() {
+        return order.totalPrice() - eventResult().totalBenefitWithoutGift();
     }
 
-    private int getGiftBenefit() {
-        return gift(order).getTotal();
-    }
-
-    private int getChristmasEventBenefit() {
+    private int christmasEventBenefit() {
         if (isChristmasDDay(visitDate)) {
             return visitDate.getDay() * CHRISTMAS_EVENT_DAILY_DISCOUNT + CHRISTMAS_EVENT_DEFAULT_DISCOUNT;
         }
         return 0;
     }
 
-    private int getWeekdayEventBenefit() {
+    private int weekdayEventBenefit() {
         if (isWeekday(visitDate)) {
-            return computeEventBenefitFromOrder(menu -> menu instanceof Dessert, WEEKDAY_EVENT_DESSERT_DISCOUNT);
+            return eventBenefitFromOrder(menu -> menu instanceof Dessert, WEEKDAY_EVENT_DESSERT_DISCOUNT);
         }
         return 0;
     }
 
-    private int getWeekendEventBenefit() {
+    private int weekendEventBenefit() {
         if (isWeekEnd(visitDate)) {
-            return computeEventBenefitFromOrder(menu -> menu instanceof MainDish, WEEKEND_EVENT_MAIN_DISH_DISCOUNT);
+            return eventBenefitFromOrder(menu -> menu instanceof MainDish, WEEKEND_EVENT_MAIN_DISH_DISCOUNT);
         }
         return 0;
     }
 
-    private int getSpecialEventBenefit() {
+    private int specialEventBenefit() {
         if (isSpecialDay(visitDate)) {
             return SPECIAL_EVENT_TOTAL_DISCOUNT;
         }
         return 0;
     }
 
-    private int computeEventBenefitFromOrder(Predicate<Menu> condition, int discount) {
+    private int eventBenefitFromOrder(Predicate<Menu> condition, int discount) {
         return order.stream()
                 .filter(menuAndCount -> condition.test(menuAndCount.getKey()))
                 .mapToInt(menuAndCount -> menuAndCount.getValue() * discount)

@@ -48,6 +48,10 @@ public class EventResult {
         return eventBenefit.values().stream().mapToInt(i -> i).sum();
     }
 
+    public int totalBenefitWithoutGift() {
+        return totalBenefit() - eventBenefit.get(GIFT);
+    }
+
     public Stream<Entry<Event, Integer>> stream() {
         return eventBenefit.entrySet().stream();
     }
