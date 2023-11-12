@@ -42,9 +42,10 @@ public class ChristmasController {
         outputView.printEventResult(eventResult);
         outputView.printBenefitTotal(eventResult);
 
-        int totalPriceAfterDiscount = totalPriceBeforeDiscount - eventResult.totalBenefit();
+        int totalPriceAfterDiscount = eventPlanner.totalPriceAfterDiscount();
         outputView.printTotalAfterDiscount(totalPriceAfterDiscount);
 
-        outputView.printEventBadge(EventBadge.from(eventResult));
+        EventBadge badge = EventBadge.from(eventResult);
+        outputView.printEventBadge(badge);
     }
 }

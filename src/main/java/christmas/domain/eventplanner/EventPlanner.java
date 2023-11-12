@@ -49,6 +49,10 @@ public class EventPlanner {
         );
     }
 
+    public int totalPriceAfterDiscount() {
+        return order.totalPrice() - (applyEvents().totalBenefit() - getGiftBenefit());
+    }
+
     private int getGiftBenefit() {
         return gift(order).getTotal();
     }
