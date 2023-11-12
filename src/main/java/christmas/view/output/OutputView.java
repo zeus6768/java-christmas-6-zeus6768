@@ -9,8 +9,8 @@ import static christmas.view.output.OutputMessage.TITLE_TOTAL_BEFORE_DISCOUNT;
 
 import java.util.Map.Entry;
 
-import christmas.domain.VisitDate;
 import christmas.domain.eventplanner.Order;
+import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.menu.Menu;
 
 public class OutputView {
@@ -20,7 +20,7 @@ public class OutputView {
     }
 
     public void printBenefitPreviewGuide(VisitDate date) {
-        System.out.printf(GUIDE_BENEFIT_PREVIEW, date.getDate());
+        System.out.printf(GUIDE_BENEFIT_PREVIEW, date.getDay());
     }
 
     public void printOrders(Order order) {

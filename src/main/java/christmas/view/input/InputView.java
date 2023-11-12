@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.VisitDate;
+import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.Menus;
