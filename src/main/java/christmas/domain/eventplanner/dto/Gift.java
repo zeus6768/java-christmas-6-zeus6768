@@ -16,6 +16,10 @@ public class Gift {
         return new Gift(menu, count);
     }
 
+    public boolean exists() {
+        return menu != Menu.NOT_EXISTS;
+    }
+
     public Menu getMenu() {
         return menu;
     }
