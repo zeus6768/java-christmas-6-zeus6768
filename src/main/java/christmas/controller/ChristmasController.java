@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.eventplanner.EventBadge;
 import christmas.domain.eventplanner.EventPlanner;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
@@ -41,7 +42,9 @@ public class ChristmasController {
         outputView.printEventResult(eventResult);
         outputView.printBenefitTotal(eventResult);
 
-        int totalPriceAfterDiscount = totalPriceBeforeDiscount - eventResult.sumBenefits();
+        int totalPriceAfterDiscount = totalPriceBeforeDiscount - eventResult.totalBenefit();
         outputView.printTotalAfterDiscount(totalPriceAfterDiscount);
+
+        outputView.printEventBadge(EventBadge.from(eventResult));
     }
 }
