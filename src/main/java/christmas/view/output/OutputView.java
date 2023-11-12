@@ -11,6 +11,7 @@ import static christmas.view.output.OutputMessage.TITLE_BENEFITS;
 import static christmas.view.output.OutputMessage.TITLE_BENEFIT_TOTAL;
 import static christmas.view.output.OutputMessage.TITLE_GIFT;
 import static christmas.view.output.OutputMessage.TITLE_ORDER;
+import static christmas.view.output.OutputMessage.TITLE_TOTAL_AFTER_DISCOUNT;
 import static christmas.view.output.OutputMessage.TITLE_TOTAL_BEFORE_DISCOUNT;
 
 import java.util.Map.Entry;
@@ -37,9 +38,9 @@ public class OutputView {
         order.stream().forEach(this::printOrder);
     }
 
-    public void printPrice(int price) {
+    public void printTotalBeforeDiscount(int price) {
         System.out.printf(TITLE_TOTAL_BEFORE_DISCOUNT);
-        System.out.printf(PRICE, price);
+        printPrice(price);
     }
 
     public void printGift(Gift gift) {
@@ -69,10 +70,19 @@ public class OutputView {
         printNotExists();
     }
 
+    public void printTotalAfterDiscount(int price) {
+        System.out.printf(TITLE_TOTAL_AFTER_DISCOUNT);
+        printPrice(price);
+    }
+
     private void printOrder(Entry<Menu, Integer> menuAndCount) {
         Menu menu = menuAndCount.getKey();
         int count = menuAndCount.getValue();
         System.out.printf(MENU, menu.getKoreanName(), count);
+    }
+
+    private void printPrice(int price) {
+        System.out.printf(PRICE, price);
     }
 
     private void printEventBenefit(Entry<Event, Integer> eventBenefit) {

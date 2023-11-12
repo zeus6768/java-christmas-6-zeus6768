@@ -32,7 +32,7 @@ public class ChristmasController {
         outputView.printOrders(order);
 
         int totalPriceBeforeDiscount = order.totalPrice();
-        outputView.printPrice(totalPriceBeforeDiscount);
+        outputView.printTotalBeforeDiscount(totalPriceBeforeDiscount);
 
         Gift gift = eventPlanner.gift(order);
         outputView.printGift(gift);
@@ -40,5 +40,8 @@ public class ChristmasController {
         EventResult eventResult = eventPlanner.applyEvents();
         outputView.printEventResult(eventResult);
         outputView.printBenefitTotal(eventResult);
+
+        int totalPriceAfterDiscount = totalPriceBeforeDiscount - eventResult.sumBenefits();
+        outputView.printTotalAfterDiscount(totalPriceAfterDiscount);
     }
 }
