@@ -1,8 +1,9 @@
 package christmas.controller;
 
-import christmas.domain.VisitDate;
+import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.eventplanner.EventPlanner;
 import christmas.domain.eventplanner.Order;
+import christmas.domain.menu.Menu;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
@@ -26,5 +27,6 @@ public class ChristmasController {
         outputView.printOrders(order);
         int totalPriceBeforeDiscount = order.totalPrice();
         outputView.printPrice(totalPriceBeforeDiscount);
+        Menu gift = eventPlanner.gift(order);
     }
 }
