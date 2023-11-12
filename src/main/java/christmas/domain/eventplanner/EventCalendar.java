@@ -15,6 +15,7 @@ public class EventCalendar {
 
     private static final Set<DayOfWeek> WEEKDAYS = Set.of(SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY);
     private static final Set<DayOfWeek> WEEKENDS = Set.of(FRIDAY, SATURDAY);
+    private static final Set<Integer> SPECIAL_DAYS = Set.of(3, 10, 17, 24, 25, 31);
 
     public static final int YEAR = 2023;
     public static final int MONTH = 12;
@@ -35,5 +36,9 @@ public class EventCalendar {
 
     public static boolean isWeekEnd(VisitDate visitDate) {
         return WEEKENDS.contains(visitDate.getDayOfWeek());
+    }
+
+    public static boolean isSpecialDay(VisitDate visitDate) {
+        return SPECIAL_DAYS.contains(visitDate.getDay());
     }
 }

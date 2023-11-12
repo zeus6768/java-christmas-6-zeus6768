@@ -1,4 +1,4 @@
-package christmas.domain.eventplanner;
+package christmas.domain.eventplanner.dto;
 
 import christmas.domain.menu.Menu;
 
@@ -22,5 +22,9 @@ public class Gift {
 
     public int getCount() {
         return count;
+    }
+
+    public int getTotal() {
+        return menu.getPrice() * count;
     }
 }
