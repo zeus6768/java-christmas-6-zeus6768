@@ -10,8 +10,10 @@ public class OutputMessage {
     protected static final String TITLE_TOTAL_BEFORE_DISCOUNT = "\n<할인 전 총주문 금액>\n";
     protected static final String TITLE_GIFT = "\n<증정 메뉴>\n";
     protected static final String TITLE_BENEFITS = "\n<혜택 내역>\n";
+    protected static final String TITLE_BENEFIT_TOTAL = "\n<총혜택 금액>\n";
 
     protected static final String MENU = "%s %d개\n";
     protected static final String PRICE = "%,d원\n";
     protected static final String BENEFIT = "%s: -%,d원\n";
+    protected static final String BENEFIT_PRICE = "-%,d원\n";
 }

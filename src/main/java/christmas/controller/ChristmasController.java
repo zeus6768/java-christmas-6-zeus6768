@@ -39,5 +39,6 @@ public class ChristmasController {
 
         EventResult eventResult = eventPlanner.applyEvents();
         outputView.printEventResult(eventResult);
+        outputView.printBenefitTotal(eventResult);
     }
 }
