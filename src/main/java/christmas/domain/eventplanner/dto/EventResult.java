@@ -1,12 +1,20 @@
 package christmas.domain.eventplanner.dto;
 
+import static christmas.domain.eventplanner.Event.GIFT;
+import static christmas.domain.eventplanner.Event.SPECIAL;
+import static christmas.domain.eventplanner.Event.WEEKDAY;
+import static christmas.domain.eventplanner.Event.WEEKEND;
+import static christmas.domain.eventplanner.Event.X_MAS_D_DAY;
+
+import java.util.EnumMap;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+
+import christmas.domain.eventplanner.Event;
+
 public class EventResult {
 
-    private final int christmasBenefit;
-    private final int weekdayBenefit;
-    private final int weekendBenefit;
-    private final int giftBenefit;
-    private final int specialBenefit;
+    private final EnumMap<Event, Integer> eventBenefit = new EnumMap<>(Event.class);
 
     private EventResult(
             int giftBenefit,
@@ -15,11 +23,11 @@ public class EventResult {
             int weekendBenefit,
             int specialBenefit
     ) {
-        this.giftBenefit = giftBenefit;
-        this.christmasBenefit = christmasBenefit;
-        this.weekdayBenefit = weekdayBenefit;
-        this.weekendBenefit = weekendBenefit;
-        this.specialBenefit = specialBenefit;
+        eventBenefit.put(GIFT, giftBenefit);
+        eventBenefit.put(X_MAS_D_DAY, christmasBenefit);
+        eventBenefit.put(WEEKDAY, weekdayBenefit);
+        eventBenefit.put(WEEKEND, weekendBenefit);
+        eventBenefit.put(SPECIAL, specialBenefit);
     }
 
     public static EventResult of(
@@ -32,27 +40,15 @@ public class EventResult {
         return new EventResult(gift, christmasBenefit, weekdayBenefit, weekendBenefit, specialBenefit);
     }
 
+    public boolean hasBenefit() {
+        return sumBenefits() != 0;
+    }
+
     public int sumBenefits() {
-        return christmasBenefit + weekdayBenefit + weekendBenefit + giftBenefit + specialBenefit;
+        return eventBenefit.values().stream().mapToInt(i -> i).sum();
     }
 
-    public int getGiftBenefit() {
-        return giftBenefit;
-    }
-
-    public int getChristmasBenefit() {
-        return christmasBenefit;
-    }
-
-    public int getWeekdayBenefit() {
-        return weekdayBenefit;
-    }
-
-    public int getWeekendBenefit() {
-        return weekendBenefit;
-    }
-
-    public int getSpecialBenefit() {
-        return specialBenefit;
+    public Stream<Entry<Event, Integer>> stream() {
+        return eventBenefit.entrySet().stream();
     }
 }

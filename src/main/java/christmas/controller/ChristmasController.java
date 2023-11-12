@@ -23,16 +23,21 @@ public class ChristmasController {
 
     public void run() {
         Menus.initialize();
+
         outputView.printIntro();
         VisitDate visitDate = inputView.askVisitDate();
         Order order = inputView.askOrder();
         eventPlanner.plan(visitDate, order);
         outputView.printBenefitPreviewGuide(visitDate);
         outputView.printOrders(order);
+
         int totalPriceBeforeDiscount = order.totalPrice();
         outputView.printPrice(totalPriceBeforeDiscount);
+
         Gift gift = eventPlanner.gift(order);
         outputView.printGift(gift);
-        EventResult benefitResult = eventPlanner.applyEvents();
+
+        EventResult eventResult = eventPlanner.applyEvents();
+        outputView.printEventResult(eventResult);
     }
 }
