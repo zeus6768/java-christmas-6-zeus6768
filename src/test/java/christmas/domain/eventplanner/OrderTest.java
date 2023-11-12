@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.eventplanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-import christmas.domain.eventplanner.Order;
 import christmas.domain.menu.Menus;
 import util.MyChristmasTest;
 

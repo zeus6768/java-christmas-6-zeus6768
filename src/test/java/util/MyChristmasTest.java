@@ -1,14 +1,29 @@
 package util;
 
 import java.io.ByteArrayInputStream;
-import java.util.Random;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+
+import camp.nextstep.edu.missionutils.Console;
+import christmas.domain.menu.Menus;
 
 public class MyChristmasTest {
 
-    public final static Random RANDOM = new Random();
+    Menus menus = new Menus();
 
-    public static void setInput(String... args) {
+    protected void setInput(String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
+    }
+
+    @AfterEach
+    void closeInput() {
+        Console.close();
+    }
+
+    @Test
+    void myTest() {
+
     }
 }

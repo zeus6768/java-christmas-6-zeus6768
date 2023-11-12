@@ -3,16 +3,14 @@ package christmas.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static christmas.domain.VisitDate.FIRST_DAY_OF_MONTH;
-import static christmas.domain.VisitDate.LAST_DAY_OF_MONTH;
+import static christmas.domain.eventplanner.EventCalendar.FIRST_DAY_OF_MONTH;
+import static christmas.domain.eventplanner.EventCalendar.LAST_DAY_OF_MONTH;
 import static christmas.view.input.exception.InputExceptionMessage.INVALID_DATE;
 import static christmas.view.input.exception.InputExceptionMessage.INVALID_ORDER;
-import static util.MyChristmasTest.setInput;
 
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,22 +18,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import christmas.domain.VisitDate;
-import christmas.domain.menu.Menus;
+import christmas.domain.eventplanner.VisitDate;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
+import util.MyChristmasTest;
 
-class InputViewTest {
+class InputViewTest extends MyChristmasTest {
 
-    Menus menus = new Menus();
     InputView inputView = new InputView(new InputExceptionHandler());
-
-    @AfterEach
-    void closeInput() {
-        Console.close();
-    }
 
     @DisplayName("방문 날짜 입력")
     @Nested
@@ -54,7 +45,7 @@ class InputViewTest {
             VisitDate visitDate = inputView.askVisitDate();
 
             // then
-            assertThat(visitDate.getDate())
+            assertThat(visitDate.getDay())
                     .isEqualTo(expected);
         }
 
