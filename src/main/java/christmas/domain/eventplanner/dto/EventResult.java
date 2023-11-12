@@ -32,6 +32,10 @@ public class EventResult {
         return new EventResult(gift, christmasBenefit, weekdayBenefit, weekendBenefit, specialBenefit);
     }
 
+    public int sumBenefits() {
+        return christmasBenefit + weekdayBenefit + weekendBenefit + giftBenefit + specialBenefit;
+    }
+
     public int getGiftBenefit() {
         return giftBenefit;
     }
@@ -50,9 +54,5 @@ public class EventResult {
 
     public int getSpecialBenefit() {
         return specialBenefit;
-    }
-
-    public boolean hasBenefit() {
-        return (christmasBenefit + weekdayBenefit + weekendBenefit + giftBenefit + specialBenefit) > 0;
     }
 }
