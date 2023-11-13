@@ -1,16 +1,12 @@
 package christmas.domain.eventplanner;
 
-import static christmas.domain.eventplanner.Event.CHRISTMAS_D_DAY;
-import static christmas.domain.eventplanner.Event.GIFT;
-import static christmas.domain.eventplanner.Event.SPECIAL;
-import static christmas.domain.eventplanner.Event.WEEKDAY;
-import static christmas.domain.eventplanner.Event.WEEKEND;
-import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_TOTAL_MIN;
-import static christmas.domain.menu.Drink.CHAMPAGNE;
-import static christmas.domain.menu.Menu.NOT_EXISTS;
+import static christmas.domain.eventbenefit.Event.GIFT;
+import static christmas.domain.eventbenefit.Event.SPECIAL;
+import static christmas.domain.eventbenefit.Event.WEEKDAY;
+import static christmas.domain.eventbenefit.Event.WEEKEND;
+import static christmas.domain.eventbenefit.Event.X_MAS_D_DAY;
 
-import christmas.domain.eventplanner.dto.EventResult;
-import christmas.domain.menu.Menu;
+import christmas.domain.eventbenefit.EventGiftBenefit;
 
 public class EventPlanner {
 
@@ -34,17 +30,14 @@ public class EventPlanner {
         return order.totalPrice();
     }
 
-    public Menu gift() {
-        if (order.totalPrice() >= GIFT_EVENT_TOTAL_MIN) {
-            return CHAMPAGNE;
-        }
-        return NOT_EXISTS;
+    public EventGiftBenefit gift() {
+        return (EventGiftBenefit) GIFT.getBenefitOf(visitDate, order);
     }
 
-    public EventResult eventResult() {
-        return EventResult.of(
+    public EventPlanResult eventResult() {
+        return EventPlanResult.of(
                 GIFT.getBenefitOf(visitDate, order),
-                CHRISTMAS_D_DAY.getBenefitOf(visitDate, order),
+                X_MAS_D_DAY.getBenefitOf(visitDate, order),
                 WEEKDAY.getBenefitOf(visitDate, order),
                 WEEKEND.getBenefitOf(visitDate, order),
                 SPECIAL.getBenefitOf(visitDate, order)
@@ -52,10 +45,10 @@ public class EventPlanner {
     }
 
     public int benefitTotal() {
-        return eventResult().totalBenefit();
+        return eventResult().totalBenefitAmount();
     }
 
     public int totalPriceAfterDiscount() {
-        return order.totalPrice() - eventResult().totalBenefitWithoutGift();
+        return order.totalPrice() - eventResult().totalBenefitAmountWithoutGift();
     }
 }

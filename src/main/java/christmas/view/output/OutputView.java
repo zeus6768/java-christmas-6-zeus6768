@@ -1,5 +1,6 @@
 package christmas.view.output;
 
+import static christmas.domain.eventbenefit.EventBenefit.NO_BENEFIT;
 import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
 import static christmas.view.output.OutputMessage.BENEFIT_PRICE;
@@ -19,11 +20,13 @@ import static christmas.view.output.OutputMessage.TITLE_TOTAL_BEFORE_DISCOUNT;
 
 import java.util.Map.Entry;
 
-import christmas.domain.eventplanner.Event;
-import christmas.domain.eventplanner.EventBadge;
+import christmas.domain.eventbenefit.Event;
+import christmas.domain.eventbenefit.EventBadge;
+import christmas.domain.eventbenefit.EventBenefit;
+import christmas.domain.eventbenefit.EventGiftBenefit;
+import christmas.domain.eventplanner.EventPlanResult;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
-import christmas.domain.eventplanner.dto.EventResult;
 import christmas.domain.menu.Menu;
 
 public class OutputView {
@@ -43,19 +46,19 @@ public class OutputView {
 
     public void printTotalBeforeDiscount(int price) {
         System.out.printf(TITLE_TOTAL_BEFORE_DISCOUNT);
-        printPrice(price);
+        System.out.printf(PRICE, price);
     }
 
-    public void printGift(Menu gift) {
+    public void printGift(EventGiftBenefit gift) {
         System.out.printf(TITLE_GIFT);
-        if (gift != Menu.NOT_EXISTS) {
+        if (gift.exists()) {
             System.out.printf(MENU, gift.getName(), GIFT_EVENT_QUANTITY);
             return;
         }
         printNotExists();
     }
 
-    public void printEventResult(EventResult result) {
+    public void printEventResult(EventPlanResult result) {
         System.out.printf(TITLE_BENEFITS);
         if (result.hasBenefit()) {
             result.stream().forEach(this::printEventBenefit);
@@ -75,7 +78,7 @@ public class OutputView {
 
     public void printTotalAfterDiscount(int price) {
         System.out.printf(TITLE_TOTAL_AFTER_DISCOUNT);
-        printPrice(price);
+        System.out.printf(PRICE, price);
     }
 
     public void printEventBadge(EventBadge badge) {
@@ -89,15 +92,11 @@ public class OutputView {
         System.out.printf(MENU, menu.getName(), count);
     }
 
-    private void printPrice(int price) {
-        System.out.printf(PRICE, price);
-    }
-
-    private void printEventBenefit(Entry<Event, Integer> eventBenefit) {
+    private void printEventBenefit(Entry<Event, EventBenefit> eventBenefit) {
         Event event = eventBenefit.getKey();
-        int benefit = eventBenefit.getValue();
-        if (benefit != 0) {
-            System.out.printf(BENEFIT, event.getName(), benefit);
+        EventBenefit benefit = eventBenefit.getValue();
+        if (benefit != NO_BENEFIT) {
+            System.out.printf(BENEFIT, event.getName(), benefit.getAmount());
         }
     }
 
