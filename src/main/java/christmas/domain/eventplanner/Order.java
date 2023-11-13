@@ -1,6 +1,6 @@
 package christmas.domain.eventplanner;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
@@ -16,7 +16,7 @@ public class Order {
 
     private Order(Map<Menu, Integer> order) {
         validate(order);
-        this.order = new LinkedHashMap<>(order);
+        this.order = new HashMap<>(order);
     }
 
     public static Order from(Map<Menu, Integer> order) {
