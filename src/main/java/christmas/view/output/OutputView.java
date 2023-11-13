@@ -1,7 +1,6 @@
 package christmas.view.output;
 
 import static christmas.domain.eventbenefit.EventBadge.NO_BADGE;
-import static christmas.domain.eventbenefit.EventBenefit.NO_BENEFIT;
 import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
 import static christmas.view.output.OutputMessage.BENEFIT_PRICE;
@@ -100,7 +99,7 @@ public class OutputView {
     private void printEventBenefit(Entry<Event, EventBenefit> eventBenefit) {
         Event event = eventBenefit.getKey();
         EventBenefit benefit = eventBenefit.getValue();
-        if (benefit != NO_BENEFIT) {
+        if (benefit.getAmount() != 0) {
             System.out.printf(BENEFIT, event.getName(), benefit.getAmount());
         }
     }
