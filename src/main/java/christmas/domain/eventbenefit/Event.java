@@ -12,6 +12,7 @@ import static christmas.domain.eventplanner.EventConstant.WEEKEND_EVENT_MAIN_DIS
 import static christmas.domain.eventplanner.EventConstant.X_MAS_EVENT_DAILY_DISCOUNT;
 import static christmas.domain.eventplanner.EventConstant.X_MAS_EVENT_DEFAULT_DISCOUNT;
 import static christmas.domain.menu.Drink.CHAMPAGNE;
+import static christmas.domain.menu.Menu.NO_MENU;
 
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
@@ -73,7 +74,7 @@ public enum Event {
                 if (order.totalPrice() >= GIFT_EVENT_TOTAL_MIN) {
                     return EventGiftBenefit.from(CHAMPAGNE);
                 }
-                return NO_BENEFIT;
+                return EventGiftBenefit.from(NO_MENU);
             });
 
     private final String name;
