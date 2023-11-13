@@ -22,23 +22,23 @@ public class EventPlan {
         return new EventPlan(visitDate, order);
     }
 
-    public VisitDate visitDate() {
+    public VisitDate getVisitDate() {
         return visitDate;
     }
 
-    public Order order() {
+    public Order getOrder() {
         return order;
     }
 
-    public int totalPriceBeforeDiscount() {
+    public int getTotalPriceBeforeDiscount() {
         return order.totalPrice();
     }
 
-    public EventGiftBenefit gift() {
+    public EventGiftBenefit getGift() {
         return (EventGiftBenefit) GIFT.getBenefitOf(visitDate, order);
     }
 
-    public EventPlanResult eventResult() {
+    public EventPlanResult getEventResult() {
         return EventPlanResult.of(
                 GIFT.getBenefitOf(visitDate, order),
                 X_MAS_D_DAY.getBenefitOf(visitDate, order),
@@ -48,11 +48,11 @@ public class EventPlan {
         );
     }
 
-    public int benefitTotal() {
-        return eventResult().totalBenefitAmount();
+    public int getTotalBenefitAmount() {
+        return getEventResult().getTotalBenefitAmount();
     }
 
-    public int totalPriceAfterDiscount() {
-        return order.totalPrice() - eventResult().totalBenefitAmountWithoutGift();
+    public int getTotalPriceAfterDiscount() {
+        return getTotalPriceBeforeDiscount() - getEventResult().getTotalBenefitAmountWithoutGift();
     }
 }

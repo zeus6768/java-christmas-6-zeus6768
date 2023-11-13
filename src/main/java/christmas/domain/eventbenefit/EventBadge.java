@@ -21,7 +21,7 @@ public enum EventBadge {
 
     public static EventBadge from(EventPlanResult result) {
         return Arrays.stream(values())
-                .filter(badge -> badge.condition.apply(result.totalBenefitAmount()))
+                .filter(badge -> badge.condition.apply(result.getTotalBenefitAmount()))
                 .findFirst()
                 .orElse(NO_BADGE);
     }

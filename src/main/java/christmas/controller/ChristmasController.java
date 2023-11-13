@@ -20,11 +20,11 @@ public class ChristmasController {
 
     public void run() {
         Menus.initialize();
-        EventPlan eventPlan = askVisitDateAndOrder();
+        EventPlan eventPlan = planEventByVisitDateAndOrder();
         printEventPlan(eventPlan);
     }
 
-    private EventPlan askVisitDateAndOrder() {
+    private EventPlan planEventByVisitDateAndOrder() {
         outputView.printIntro();
         VisitDate visitDate = inputView.askVisitDate();
         Order order = inputView.askOrder();
@@ -32,14 +32,13 @@ public class ChristmasController {
     }
 
     private void printEventPlan(EventPlan eventPlan) {
-        outputView.printBenefitPreviewGuide(eventPlan.visitDate());
-        outputView.printOrders(eventPlan.order());
-        outputView.printTotalBeforeDiscount(eventPlan.totalPriceBeforeDiscount());
-        outputView.printGift(eventPlan.gift());
-        outputView.printEventResult(eventPlan.eventResult());
-        outputView.printBenefitTotal(eventPlan.benefitTotal());
-        outputView.printTotalAfterDiscount(eventPlan.totalPriceAfterDiscount());
-        outputView.printEventBadge(EventBadge.from(eventPlan.eventResult()));
+        outputView.printBenefitPreviewGuide(eventPlan.getVisitDate());
+        outputView.printOrders(eventPlan.getOrder());
+        outputView.printTotalBeforeDiscount(eventPlan.getTotalPriceBeforeDiscount());
+        outputView.printGift(eventPlan.getGift());
+        outputView.printEventResult(eventPlan.getEventResult());
+        outputView.printTotalBenefitAmount(eventPlan.getTotalBenefitAmount());
+        outputView.printTotalAfterDiscount(eventPlan.getTotalPriceAfterDiscount());
+        outputView.printEventBadge(EventBadge.from(eventPlan.getEventResult()));
     }
-
 }

@@ -42,17 +42,17 @@ public class EventPlanResult {
     }
 
     public boolean hasBenefit() {
-        return totalBenefitAmount() != 0;
+        return getTotalBenefitAmount() != 0;
     }
 
-    public int totalBenefitAmount() {
+    public int getTotalBenefitAmount() {
         return eventBenefits.values().stream()
                 .mapToInt(EventBenefit::getAmount)
                 .sum();
     }
 
-    public int totalBenefitAmountWithoutGift() {
-        return totalBenefitAmount() - getBenefitFrom(GIFT).getAmount();
+    public int getTotalBenefitAmountWithoutGift() {
+        return getTotalBenefitAmount() - getBenefitFrom(GIFT).getAmount();
     }
 
     public Stream<Entry<Event, EventBenefit>> stream() {
