@@ -1,10 +1,10 @@
 package christmas.domain.eventplanner.dto;
 
+import static christmas.domain.eventplanner.Event.CHRISTMAS_D_DAY;
 import static christmas.domain.eventplanner.Event.GIFT;
 import static christmas.domain.eventplanner.Event.SPECIAL;
 import static christmas.domain.eventplanner.Event.WEEKDAY;
 import static christmas.domain.eventplanner.Event.WEEKEND;
-import static christmas.domain.eventplanner.Event.X_MAS_D_DAY;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;
@@ -24,7 +24,7 @@ public class EventResult {
             int specialBenefit
     ) {
         eventBenefit.put(GIFT, giftBenefit);
-        eventBenefit.put(X_MAS_D_DAY, christmasBenefit);
+        eventBenefit.put(CHRISTMAS_D_DAY, christmasBenefit);
         eventBenefit.put(WEEKDAY, weekdayBenefit);
         eventBenefit.put(WEEKEND, weekendBenefit);
         eventBenefit.put(SPECIAL, specialBenefit);

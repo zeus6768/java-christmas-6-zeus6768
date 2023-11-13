@@ -4,7 +4,6 @@ import christmas.domain.eventplanner.EventBadge;
 import christmas.domain.eventplanner.EventPlanner;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
-import christmas.domain.eventplanner.dto.EventPlan;
 import christmas.domain.menu.Menus;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
@@ -23,26 +22,26 @@ public class ChristmasController {
 
     public void run() {
         Menus.initialize();
-        EventPlan eventPlan = askEventPlan();
-        printEventPlan(eventPlan);
+        askEventPlan();
+        printEventPlan();
     }
 
-    private EventPlan askEventPlan() {
+    private void askEventPlan() {
         outputView.printIntro();
         VisitDate visitDate = inputView.askVisitDate();
         Order order = inputView.askOrder();
-        return eventPlanner.plan(visitDate, order);
+        eventPlanner.plan(visitDate, order);
     }
 
-    private void printEventPlan(EventPlan eventPlan) {
-        outputView.printBenefitPreviewGuide(eventPlan.getVisitDate());
-        outputView.printOrders(eventPlan.getOrder());
-        outputView.printTotalBeforeDiscount(eventPlan.getTotalPriceBeforeDiscount());
-        outputView.printGift(eventPlan.getGift());
-        outputView.printEventResult(eventPlan.getEventResult());
-        outputView.printBenefitTotal(eventPlan.getEventResult());
-        outputView.printTotalAfterDiscount(eventPlan.getTotalPriceAfterDiscount());
-        outputView.printEventBadge(EventBadge.from(eventPlan.getEventResult()));
+    private void printEventPlan() {
+        outputView.printBenefitPreviewGuide(eventPlanner.visitDate());
+        outputView.printOrders(eventPlanner.order());
+        outputView.printTotalBeforeDiscount(eventPlanner.totalPriceBeforeDiscount());
+        outputView.printGift(eventPlanner.gift());
+        outputView.printEventResult(eventPlanner.eventResult());
+        outputView.printBenefitTotal(eventPlanner.benefitTotal());
+        outputView.printTotalAfterDiscount(eventPlanner.totalPriceAfterDiscount());
+        outputView.printEventBadge(EventBadge.from(eventPlanner.eventResult()));
     }
 
 }

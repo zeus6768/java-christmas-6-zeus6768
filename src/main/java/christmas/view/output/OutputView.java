@@ -1,5 +1,6 @@
 package christmas.view.output;
 
+import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
 import static christmas.view.output.OutputMessage.BENEFIT_PRICE;
 import static christmas.view.output.OutputMessage.EVENT_BADGE;
@@ -23,7 +24,6 @@ import christmas.domain.eventplanner.EventBadge;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.eventplanner.dto.EventResult;
-import christmas.domain.eventplanner.dto.Gift;
 import christmas.domain.menu.Menu;
 
 public class OutputView {
@@ -46,10 +46,10 @@ public class OutputView {
         printPrice(price);
     }
 
-    public void printGift(Gift gift) {
+    public void printGift(Menu gift) {
         System.out.printf(TITLE_GIFT);
-        if (gift.exists()) {
-            System.out.printf(MENU, gift.getMenu().getKoreanName(), gift.getCount());
+        if (gift != Menu.NOT_EXISTS) {
+            System.out.printf(MENU, gift.getName(), GIFT_EVENT_QUANTITY);
             return;
         }
         printNotExists();
@@ -64,10 +64,10 @@ public class OutputView {
         printNotExists();
     }
 
-    public void printBenefitTotal(EventResult result) {
+    public void printBenefitTotal(int total) {
         System.out.printf(TITLE_BENEFIT_TOTAL);
-        if (result.hasBenefit()) {
-            System.out.printf(BENEFIT_PRICE, result.totalBenefit());
+        if (total != 0) {
+            System.out.printf(BENEFIT_PRICE, total);
             return;
         }
         printNotExists();
@@ -80,13 +80,13 @@ public class OutputView {
 
     public void printEventBadge(EventBadge badge) {
         System.out.printf(TITLE_EVENT_BADGE);
-        System.out.printf(EVENT_BADGE, badge);
+        System.out.printf(EVENT_BADGE, badge.getName());
     }
 
     private void printOrder(Entry<Menu, Integer> menuAndCount) {
         Menu menu = menuAndCount.getKey();
         int count = menuAndCount.getValue();
-        System.out.printf(MENU, menu.getKoreanName(), count);
+        System.out.printf(MENU, menu.getName(), count);
     }
 
     private void printPrice(int price) {
@@ -97,7 +97,7 @@ public class OutputView {
         Event event = eventBenefit.getKey();
         int benefit = eventBenefit.getValue();
         if (benefit != 0) {
-            System.out.printf(BENEFIT, event, benefit);
+            System.out.printf(BENEFIT, event.getName(), benefit);
         }
     }
 
