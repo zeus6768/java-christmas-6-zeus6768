@@ -1,5 +1,6 @@
 package christmas.view.output;
 
+import static christmas.domain.eventbenefit.EventBadge.NO_BADGE;
 import static christmas.domain.eventbenefit.EventBenefit.NO_BENEFIT;
 import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
@@ -67,7 +68,7 @@ public class OutputView {
         printNotExists();
     }
 
-    public void printBenefitTotal(int total) {
+    public void printTotalBenefitAmount(int total) {
         System.out.printf(TITLE_BENEFIT_TOTAL);
         if (total != 0) {
             System.out.printf(BENEFIT_PRICE, total);
@@ -83,7 +84,11 @@ public class OutputView {
 
     public void printEventBadge(EventBadge badge) {
         System.out.printf(TITLE_EVENT_BADGE);
-        System.out.printf(EVENT_BADGE, badge.getName());
+        if (badge != NO_BADGE) {
+            System.out.printf(EVENT_BADGE, badge.getName());
+            return;
+        }
+        printNotExists();
     }
 
     private void printOrder(Entry<Menu, Integer> menuAndCount) {

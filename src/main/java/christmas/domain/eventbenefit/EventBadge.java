@@ -9,7 +9,7 @@ public enum EventBadge {
     SANTA("산타", (totalBenefit) -> totalBenefit >= 20_000),
     TREE("트리", (totalBenefit) -> totalBenefit >= 10_000),
     STAR("스타", (totalBenefit) -> totalBenefit >= 5_000),
-    NO_BADGE("없음", (totalBenefit) -> true);
+    NO_BADGE("", (totalBenefit) -> true);
 
     private final String name;
     private final Function<Integer, Boolean> condition;
