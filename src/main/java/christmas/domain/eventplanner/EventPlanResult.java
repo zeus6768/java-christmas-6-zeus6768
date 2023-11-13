@@ -55,11 +55,11 @@ public class EventPlanResult {
         return getTotalBenefitAmount() - getBenefitFrom(GIFT).getAmount();
     }
 
-    public Stream<Entry<Event, EventBenefit>> stream() {
-        return eventBenefits.entrySet().stream();
-    }
-
     public EventBenefit getBenefitFrom(Event event) {
         return eventBenefits.get(event);
+    }
+
+    public Stream<Entry<Event, EventBenefit>> stream() {
+        return eventBenefits.entrySet().stream();
     }
 }

@@ -1,7 +1,7 @@
 package christmas.domain.eventbenefit;
 
 import static christmas.domain.eventbenefit.EventBenefit.NO_BENEFIT;
-import static christmas.domain.eventplanner.EventCalendar.isChristmasDDay;
+import static christmas.domain.eventplanner.EventCalendar.isXMasDDay;
 import static christmas.domain.eventplanner.EventCalendar.isSpecialDay;
 import static christmas.domain.eventplanner.EventCalendar.isWeekEnd;
 import static christmas.domain.eventplanner.EventCalendar.isWeekday;
@@ -27,7 +27,7 @@ public enum Event {
 
     X_MAS_D_DAY("크리스마스 디데이 할인",
             (visitDate, order) -> {
-                if (isChristmasDDay(visitDate)) {
+                if (isXMasDDay(visitDate)) {
                     return EventDiscountBenefit.from(
                             visitDate.getDay() * X_MAS_EVENT_DAILY_DISCOUNT + X_MAS_EVENT_DEFAULT_DISCOUNT
                     );

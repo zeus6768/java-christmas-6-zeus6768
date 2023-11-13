@@ -40,7 +40,7 @@ public class EventPlan {
 
     public EventPlanResult getEventResult() {
         return EventPlanResult.of(
-                GIFT.getBenefitOf(visitDate, order),
+                getGift(),
                 X_MAS_D_DAY.getBenefitOf(visitDate, order),
                 WEEKDAY.getBenefitOf(visitDate, order),
                 WEEKEND.getBenefitOf(visitDate, order),

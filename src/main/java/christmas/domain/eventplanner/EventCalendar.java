@@ -22,12 +22,12 @@ public class EventCalendar {
     public static final int FIRST_DAY_OF_MONTH = 1;
     public static final int LAST_DAY_OF_MONTH = 31;
 
-    public static final int CHRISTMAS_EVENT_FIRST_DAY = FIRST_DAY_OF_MONTH;
-    public static final int CHRISTMAS_EVENT_LAST_DAY = 25;
+    public static final int X_MAS_EVENT_FIRST_DAY = FIRST_DAY_OF_MONTH;
+    public static final int X_MAS_EVENT_LAST_DAY = 25;
 
-    public static boolean isChristmasDDay(VisitDate visitDate) {
-        int date = visitDate.getDay();
-        return CHRISTMAS_EVENT_FIRST_DAY <= date && date <= CHRISTMAS_EVENT_LAST_DAY;
+    public static boolean isXMasDDay(VisitDate visitDate) {
+        int day = visitDate.getDay();
+        return X_MAS_EVENT_FIRST_DAY <= day && day <= X_MAS_EVENT_LAST_DAY;
     }
 
     public static boolean isWeekday(VisitDate visitDate) {
