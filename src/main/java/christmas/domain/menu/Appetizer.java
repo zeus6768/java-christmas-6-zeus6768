@@ -6,17 +6,17 @@ public enum Appetizer implements Menu {
     TAPAS("타파스", 5_500),
     CAESAR_SALAD("시저샐러드", 8_000);
 
-    private final String koreanName;
+    private final String name;
     private final int price;
 
-    Appetizer(String koreanName, int price) {
-        this.koreanName = koreanName;
+    Appetizer(String name, int price) {
+        this.name = name;
         this.price = price;
     }
 
     @Override
-    public String getKoreanName() {
-        return koreanName;
+    public String getName() {
+        return name;
     }
 
     @Override

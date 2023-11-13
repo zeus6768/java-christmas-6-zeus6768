@@ -6,17 +6,17 @@ public enum Drink implements Menu {
     RED_WINE("레드와인", 60_000),
     CHAMPAGNE("샴페인", 25_000);
 
-    private final String koreanName;
+    private final String name;
     private final int price;
 
-    Drink(String koreanName, int price) {
-        this.koreanName = koreanName;
+    Drink(String name, int price) {
+        this.name = name;
         this.price = price;
     }
 
     @Override
-    public String getKoreanName() {
-        return koreanName;
+    public String getName() {
+        return name;
     }
 
     @Override

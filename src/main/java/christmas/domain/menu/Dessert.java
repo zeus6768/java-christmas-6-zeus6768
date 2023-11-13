@@ -5,17 +5,17 @@ public enum Dessert implements Menu {
     CHOCOLATE_CAKE("초코케이크", 15_000),
     ICE_CREAM("아이스크림", 5_000);
 
-    private final String koreanName;
+    private final String name;
     private final int price;
 
-    Dessert(String koreanName, int price) {
-        this.koreanName = koreanName;
+    Dessert(String name, int price) {
+        this.name = name;
         this.price = price;
     }
 
     @Override
-    public String getKoreanName() {
-        return koreanName;
+    public String getName() {
+        return name;
     }
 
     @Override

@@ -3,7 +3,7 @@ package christmas.domain.menu;
 public interface Menu {
     Menu NOT_EXISTS = new Menu() {
         @Override
-        public String getKoreanName() {
+        public String getName() {
             return "";
         }
 
@@ -13,6 +13,6 @@ public interface Menu {
         }
     };
 
-    String getKoreanName();
+    String getName();
     int getPrice();
 }

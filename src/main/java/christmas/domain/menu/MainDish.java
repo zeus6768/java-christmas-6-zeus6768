@@ -7,17 +7,17 @@ public enum MainDish implements Menu {
     SEAFOOD_PASTA("해산물파스타", 35_000),
     CHRISTMAS_PASTA("크리스마스파스타", 25_000);
 
-    private final String koreanName;
+    private final String name;
     private final int price;
 
-    MainDish(String koreanName, int price) {
-        this.koreanName = koreanName;
+    MainDish(String name, int price) {
+        this.name = name;
         this.price = price;
     }
 
     @Override
-    public String getKoreanName() {
-        return koreanName;
+    public String getName() {
+        return name;
     }
 
     @Override
