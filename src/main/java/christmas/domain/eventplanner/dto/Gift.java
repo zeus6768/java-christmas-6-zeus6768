@@ -20,15 +20,15 @@ public class Gift {
         return menu != Menu.NOT_EXISTS;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public int getTotal() {
+        return menu.getPrice() * count;
+    }
+
+    public String getName() {
+        return menu.getName();
     }
 
     public int getCount() {
         return count;
-    }
-
-    public int getTotal() {
-        return menu.getPrice() * count;
     }
 }

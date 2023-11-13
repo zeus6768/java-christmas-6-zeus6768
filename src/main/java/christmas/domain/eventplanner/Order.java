@@ -23,6 +23,20 @@ public class Order {
         return new Order(order);
     }
 
+    public int totalPrice() {
+        return stream()
+                .mapToInt(menuAndCount -> {
+                            Menu menu = menuAndCount.getKey();
+                            int count = menuAndCount.getValue();
+                            return menu.getPrice() * count;
+                        })
+                .sum();
+    }
+
+    public Stream<Entry<Menu, Integer>> stream() {
+        return order.entrySet().stream();
+    }
+
     private void validate(Map<Menu, Integer> order) {
         validateOrderCountInRange(order);
         validateOrderCountSum(order);
@@ -50,19 +64,5 @@ public class Order {
 
     private boolean isCountSumExceeded(Map<Menu, Integer> order) {
         return order.values().stream().mapToInt(i -> i).sum() > ORDER_COUNT_SUM_MAX;
-    }
-
-    public Stream<Entry<Menu, Integer>> stream() {
-        return order.entrySet().stream();
-    }
-
-    public int totalPrice() {
-        return stream()
-                .mapToInt(menuAndCount -> {
-                            Menu menu = menuAndCount.getKey();
-                            int count = menuAndCount.getValue();
-                            return menu.getPrice() * count;
-                        })
-                .sum();
     }
 }

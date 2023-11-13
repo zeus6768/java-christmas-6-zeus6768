@@ -26,8 +26,7 @@ public enum EventBadge {
                 .orElse(NO_BADGE);
     }
 
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 }
