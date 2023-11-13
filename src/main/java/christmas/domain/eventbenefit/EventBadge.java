@@ -1,9 +1,9 @@
-package christmas.domain.eventplanner;
+package christmas.domain.eventbenefit;
 
 import java.util.Arrays;
 import java.util.function.Function;
 
-import christmas.domain.eventplanner.dto.EventResult;
+import christmas.domain.eventplanner.EventPlanResult;
 
 public enum EventBadge {
     SANTA("산타", (totalBenefit) -> totalBenefit >= 20_000),
@@ -19,9 +19,9 @@ public enum EventBadge {
         this.condition = condition;
     }
 
-    public static EventBadge from(EventResult result) {
+    public static EventBadge from(EventPlanResult result) {
         return Arrays.stream(values())
-                .filter(badge -> badge.condition.apply(result.totalBenefit()))
+                .filter(badge -> badge.condition.apply(result.totalBenefitAmount()))
                 .findFirst()
                 .orElse(NO_BADGE);
     }

@@ -1,7 +1,7 @@
 package christmas.domain.menu;
 
 public interface Menu {
-    Menu NOT_EXISTS = new Menu() {
+    Menu NO_MENU = new Menu() {
         @Override
         public String getName() {
             return "";

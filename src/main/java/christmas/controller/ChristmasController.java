@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.eventplanner.EventBadge;
+import christmas.domain.eventbenefit.EventBadge;
 import christmas.domain.eventplanner.EventPlanner;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
@@ -22,11 +22,11 @@ public class ChristmasController {
 
     public void run() {
         Menus.initialize();
-        askEventPlan();
+        askVisitDateAndOrder();
         printEventPlan();
     }
 
-    private void askEventPlan() {
+    private void askVisitDateAndOrder() {
         outputView.printIntro();
         VisitDate visitDate = inputView.askVisitDate();
         Order order = inputView.askOrder();
