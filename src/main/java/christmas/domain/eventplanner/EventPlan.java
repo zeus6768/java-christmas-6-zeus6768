@@ -8,14 +8,18 @@ import static christmas.domain.eventbenefit.Event.X_MAS_D_DAY;
 
 import christmas.domain.eventbenefit.EventGiftBenefit;
 
-public class EventPlanner {
+public class EventPlan {
 
-    private VisitDate visitDate;
-    private Order order;
+    private final VisitDate visitDate;
+    private final Order order;
 
-    public void plan(VisitDate visitDate, Order order) {
+    private EventPlan(VisitDate visitDate, Order order) {
         this.visitDate = visitDate;
         this.order = order;
+    }
+
+    public static EventPlan of(VisitDate visitDate, Order order) {
+        return new EventPlan(visitDate, order);
     }
 
     public VisitDate visitDate() {

@@ -1,7 +1,6 @@
 package christmas.config;
 
 import christmas.controller.ChristmasController;
-import christmas.domain.eventplanner.EventPlanner;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
 import christmas.view.output.OutputView;
@@ -11,7 +10,6 @@ public class ChristmasConfig {
     private static ChristmasConfig christmasConfig;
 
     private ChristmasController christmasController;
-    private EventPlanner eventPlanner;
     private InputView inputView;
     private InputExceptionHandler inputExceptionHandler;
     private OutputView outputView;
@@ -27,18 +25,10 @@ public class ChristmasConfig {
         if (christmasController == null) {
             christmasController = new ChristmasController(
                     inputView(),
-                    outputView(),
-                    eventPlanner()
+                    outputView()
             );
         }
         return christmasController;
-    }
-
-    public EventPlanner eventPlanner() {
-        if (eventPlanner == null) {
-            eventPlanner = new EventPlanner();
-        }
-        return eventPlanner;
     }
 
     public InputView inputView() {
