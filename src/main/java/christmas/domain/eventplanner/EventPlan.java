@@ -54,7 +54,8 @@ public class EventPlan {
     }
 
     public int getTotalPriceAfterDiscount() {
-        return getTotalPriceBeforeDiscount() - getEventResult().getTotalBenefitAmountWithoutGift();
+        int total = getTotalPriceBeforeDiscount() - getEventResult().getTotalBenefitAmountWithoutGift();
+        return Math.max(0, total);
     }
 
     public EventBadge getEventBadge() {
