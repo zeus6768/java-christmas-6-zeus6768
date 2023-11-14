@@ -1,6 +1,5 @@
 package christmas.controller;
 
-import christmas.domain.eventbenefit.EventBadge;
 import christmas.domain.eventplanner.EventPlan;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;
@@ -39,6 +38,6 @@ public class ChristmasController {
         outputView.printEventResult(eventPlan.getEventResult());
         outputView.printTotalBenefitAmount(eventPlan.getTotalBenefitAmount());
         outputView.printTotalAfterDiscount(eventPlan.getTotalPriceAfterDiscount());
-        outputView.printEventBadge(EventBadge.from(eventPlan.getEventResult()));
+        outputView.printEventBadge(eventPlan.getEventBadge());
     }
 }

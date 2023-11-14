@@ -2,8 +2,6 @@ package christmas.domain.eventbenefit;
 
 import java.util.Arrays;
 
-import christmas.domain.eventplanner.EventPlanResult;
-
 public enum EventBadge {
     SANTA("산타", 20_000),
     TREE("트리", 10_000),
@@ -18,9 +16,9 @@ public enum EventBadge {
         this.minTotalBenefit = minTotalBenefit;
     }
 
-    public static EventBadge from(EventPlanResult result) {
+    public static EventBadge from(int totalBenefitAmount) {
         return Arrays.stream(values())
-                .filter(badge -> badge.isQualified(result.getTotalBenefitAmount()))
+                .filter(badge -> badge.isQualified(totalBenefitAmount))
                 .findFirst()
                 .orElse(NO_BADGE);
     }

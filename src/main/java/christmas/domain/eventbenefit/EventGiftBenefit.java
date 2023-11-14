@@ -6,7 +6,7 @@ public class EventGiftBenefit implements EventBenefit, Menu {
 
     private final Menu menu;
 
-    private EventGiftBenefit(Menu menu){
+    private EventGiftBenefit(Menu menu) {
         this.menu = menu;
     }
 
@@ -31,5 +31,9 @@ public class EventGiftBenefit implements EventBenefit, Menu {
     @Override
     public int getAmount() {
         return getPrice();
+    }
+
+    public Menu getGiftMenu() {
+        return menu;
     }
 }

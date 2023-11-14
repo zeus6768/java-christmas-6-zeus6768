@@ -6,6 +6,7 @@ import static christmas.domain.eventbenefit.Event.WEEKDAY;
 import static christmas.domain.eventbenefit.Event.WEEKEND;
 import static christmas.domain.eventbenefit.Event.X_MAS_D_DAY;
 
+import christmas.domain.eventbenefit.EventBadge;
 import christmas.domain.eventbenefit.EventGiftBenefit;
 
 public class EventPlan {
@@ -54,5 +55,9 @@ public class EventPlan {
 
     public int getTotalPriceAfterDiscount() {
         return getTotalPriceBeforeDiscount() - getEventResult().getTotalBenefitAmountWithoutGift();
+    }
+
+    public EventBadge getEventBadge() {
+        return EventBadge.from(getEventResult().getTotalBenefitAmount());
     }
 }
