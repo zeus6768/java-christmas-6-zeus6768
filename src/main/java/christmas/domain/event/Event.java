@@ -26,13 +26,9 @@ import christmas.domain.menu.Menu;
 public enum Event {
 
     X_MAS_D_DAY("크리스마스 디데이 할인", ((visitDate, order) -> getXMasEventBenefit(visitDate))),
-
     WEEKDAY("평일 할인", Event::getWeekdayEventBenefit),
-
     WEEKEND("주말 할인", Event::getWeekendEventBenefit),
-
     SPECIAL("스페셜 할인", Event::getSpecialEventBenefit),
-
     GIFT("증정 이벤트", ((visitDate, order) -> getGiftEventBenefit(order)));
 
     private final String name;

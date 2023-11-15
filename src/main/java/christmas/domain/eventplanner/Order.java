@@ -9,8 +9,8 @@ import christmas.domain.menu.Menu;
 
 public class Order {
 
-    private static final int ORDER_COUNT_MIN = 1;
-    private static final int ORDER_COUNT_SUM_MAX = 20;
+    private static final int MENU_COUNT_MIN = 1;
+    private static final int MENU_COUNT_SUM_MAX = 20;
 
     private final Map<Menu, Integer> order;
 
@@ -26,10 +26,10 @@ public class Order {
     public int totalPrice() {
         return stream()
                 .mapToInt(menuAndCount -> {
-                            Menu menu = menuAndCount.getKey();
-                            int count = menuAndCount.getValue();
-                            return menu.getPrice() * count;
-                        })
+                    Menu menu = menuAndCount.getKey();
+                    int count = menuAndCount.getValue();
+                    return menu.getPrice() * count;
+                })
                 .sum();
     }
 
@@ -58,11 +58,11 @@ public class Order {
         return order.values().stream().anyMatch(this::isOutOfRange);
     }
 
-    private boolean isOutOfRange(int count) {
-        return count < ORDER_COUNT_MIN || count > ORDER_COUNT_SUM_MAX;
+    private boolean isCountSumExceeded(Map<Menu, Integer> order) {
+        return order.values().stream().mapToInt(i -> i).sum() > MENU_COUNT_SUM_MAX;
     }
 
-    private boolean isCountSumExceeded(Map<Menu, Integer> order) {
-        return order.values().stream().mapToInt(i -> i).sum() > ORDER_COUNT_SUM_MAX;
+    private boolean isOutOfRange(int count) {
+        return count < MENU_COUNT_MIN || count > MENU_COUNT_SUM_MAX;
     }
 }
