@@ -47,7 +47,7 @@ class EventPlanTest extends MyChristmasTest {
 
         // then
         assertThat(eventPlan.getTotalPriceBeforeDiscount()).isEqualTo(totalPriceBeforeDiscount);
-        assertThat(eventPlan.getGift().getGiftMenu()).isEqualTo(gift);
+        assertThat(eventPlan.getGift().getName()).isEqualTo(gift.getName());
         assertThat(eventPlan.getTotalBenefitAmount()).isEqualTo(benefitAmount);
         assertThat(eventPlan.getTotalPriceAfterDiscount()).isEqualTo(totalPriceAfterDiscount);
         assertThat(eventPlan.getEventBadge()).isEqualTo(badge);

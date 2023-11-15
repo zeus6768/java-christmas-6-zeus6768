@@ -32,8 +32,4 @@ public class EventGiftBenefit implements EventBenefit, Menu {
     public int getAmount() {
         return getPrice();
     }
-
-    public Menu getGiftMenu() {
-        return menu;
-    }
 }
