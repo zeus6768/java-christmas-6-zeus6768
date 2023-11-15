@@ -6,23 +6,27 @@ import java.util.stream.Stream;
 
 public class Menus {
 
-    private static final Map<String, Menu> MENUS = new HashMap<>();
+    private final Map<String, Menu> menus = new HashMap<>();
 
-    public static void initialize() {
+    public Menus() {
         putMenus(Appetizer.values());
         putMenus(Dessert.values());
         putMenus(Drink.values());
         putMenus(MainDish.values());
     }
 
-    private static void putMenus(Menu[] menus) {
-        Stream.of(menus).forEach(menu -> MENUS.put(menu.getName(), menu));
-    }
-
-    public static Menu find(String name) {
-        if (MENUS.containsKey(name)){
-            return MENUS.get(name);
+    public Menu find(String name) {
+        if (menus.containsKey(name)) {
+            return menus.get(name);
         }
         throw new IllegalArgumentException();
+    }
+
+    private void putMenus(Menu[] menus) {
+        Stream.of(menus).forEach(this::put);
+    }
+
+    private void put(Menu menu) {
+        menus.put(menu.getName(), menu);
     }
 }

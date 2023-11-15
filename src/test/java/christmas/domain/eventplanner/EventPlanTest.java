@@ -18,13 +18,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import christmas.domain.event.EventBadge;
 import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
 import util.MyChristmasTest;
 
 class EventPlanTest extends MyChristmasTest {
 
-    InputView inputView = new InputView(new InputExceptionHandler());
+    InputView inputView = new InputView(new Menus(), new InputExceptionHandler());
 
     @DisplayName("우테코 식당 이벤트 플래너 테스트")
     @MethodSource("testCases")

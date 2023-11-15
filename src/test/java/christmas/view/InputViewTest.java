@@ -18,13 +18,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import christmas.domain.eventplanner.VisitDate;
+import christmas.domain.menu.Menus;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
 import util.MyChristmasTest;
 
 class InputViewTest extends MyChristmasTest {
 
-    InputView inputView = new InputView(new InputExceptionHandler());
+    InputView inputView = new InputView(new Menus(), new InputExceptionHandler());
 
     @DisplayName("방문 날짜 입력")
     @Nested

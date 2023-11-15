@@ -16,17 +16,19 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.eventplanner.Order;
+import christmas.domain.eventplanner.VisitDate;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.Menus;
 import christmas.view.input.exception.InputExceptionHandler;
 
 public class InputView {
 
+    private final Menus menus;
     private final InputExceptionHandler inputHandler;
 
-    public InputView(InputExceptionHandler inputHandler) {
+    public InputView(Menus menus, InputExceptionHandler inputHandler) {
+        this.menus = menus;
         this.inputHandler = inputHandler;
     }
 
@@ -49,7 +51,7 @@ public class InputView {
         Map<Menu, Integer> order = Stream.of(menuAndCounts)
                 .map(menuAndCount -> menuAndCount.split(DELIMITER_HYPHEN, MENU_AND_COUNT_SPLIT_LENGTH))
                 .collect(toMap(
-                        menuAndCount -> Menus.find(menuAndCount[MENU_INDEX]),
+                        menuAndCount -> menus.find(menuAndCount[MENU_INDEX]),
                         menuAndCount -> Integer.parseInt(menuAndCount[COUNT_INDEX])
                 ));
         return Order.from(order);

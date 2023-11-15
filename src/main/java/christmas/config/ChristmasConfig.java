@@ -1,6 +1,7 @@
 package christmas.config;
 
 import christmas.controller.ChristmasController;
+import christmas.domain.menu.Menus;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
 import christmas.view.output.OutputView;
@@ -11,6 +12,7 @@ public class ChristmasConfig {
 
     private ChristmasController christmasController;
     private InputView inputView;
+    private Menus menus;
     private InputExceptionHandler inputExceptionHandler;
     private OutputView outputView;
 
@@ -34,10 +36,18 @@ public class ChristmasConfig {
     public InputView inputView() {
         if (inputView == null) {
             inputView = new InputView(
+                    menus(),
                     inputValidationHandler()
             );
         }
         return inputView;
+    }
+
+    public Menus menus() {
+        if (menus == null) {
+            menus = new Menus();
+        }
+        return menus;
     }
 
     public InputExceptionHandler inputValidationHandler() {
