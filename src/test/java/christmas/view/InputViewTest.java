@@ -3,8 +3,6 @@ package christmas.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static christmas.domain.eventplanner.EventCalendar.FIRST_DAY_OF_MONTH;
-import static christmas.domain.eventplanner.EventCalendar.LAST_DAY_OF_MONTH;
 import static christmas.view.input.exception.InputExceptionMessage.INVALID_DATE;
 import static christmas.view.input.exception.InputExceptionMessage.INVALID_ORDER;
 
@@ -50,7 +48,7 @@ class InputViewTest extends MyChristmasTest {
         }
 
         private static Stream<Arguments> inputVisitDate() {
-            return IntStream.range(FIRST_DAY_OF_MONTH, LAST_DAY_OF_MONTH)
+            return IntStream.range(1, 31)
                     .mapToObj(number ->
                             Arguments.of(String.valueOf(number), number)
                     );

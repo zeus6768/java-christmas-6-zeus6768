@@ -9,6 +9,7 @@ import static java.time.DayOfWeek.TUESDAY;
 import static java.time.DayOfWeek.WEDNESDAY;
 
 import java.time.DayOfWeek;
+import java.time.Month;
 import java.util.Set;
 
 public class EventCalendar {
@@ -17,12 +18,10 @@ public class EventCalendar {
     private static final Set<DayOfWeek> WEEKENDS = Set.of(FRIDAY, SATURDAY);
     private static final Set<Integer> SPECIAL_DAYS = Set.of(3, 10, 17, 24, 25, 31);
 
-    public static final int YEAR = 2023;
-    public static final int MONTH = 12;
-    public static final int FIRST_DAY_OF_MONTH = 1;
-    public static final int LAST_DAY_OF_MONTH = 31;
+    public static final int EVENT_YEAR = 2023;
+    public static final int EVENT_MONTH = Month.DECEMBER.getValue();
 
-    public static final int X_MAS_EVENT_FIRST_DAY = FIRST_DAY_OF_MONTH;
+    public static final int X_MAS_EVENT_FIRST_DAY = 1;
     public static final int X_MAS_EVENT_LAST_DAY = 25;
 
     public static boolean isXMasDDay(VisitDate visitDate) {

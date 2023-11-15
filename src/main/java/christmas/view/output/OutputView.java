@@ -1,6 +1,7 @@
 package christmas.view.output;
 
 import static christmas.domain.eventbenefit.EventBadge.NO_BADGE;
+import static christmas.domain.eventplanner.EventCalendar.EVENT_MONTH;
 import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
 import static christmas.view.output.OutputMessage.BENEFIT_PRICE;
@@ -32,11 +33,11 @@ import christmas.domain.menu.Menu;
 public class OutputView {
 
     public void printIntro() {
-        System.out.printf(GUIDE_INTRO);
+        System.out.printf(GUIDE_INTRO, EVENT_MONTH);
     }
 
     public void printBenefitPreviewGuide(VisitDate date) {
-        System.out.printf(GUIDE_BENEFIT_PREVIEW, date.getDay());
+        System.out.printf(GUIDE_BENEFIT_PREVIEW, EVENT_MONTH, date.getDay());
     }
 
     public void printOrders(Order order) {
@@ -82,7 +83,7 @@ public class OutputView {
     }
 
     public void printEventBadge(EventBadge badge) {
-        System.out.printf(TITLE_EVENT_BADGE);
+        System.out.printf(TITLE_EVENT_BADGE, EVENT_MONTH);
         if (badge != NO_BADGE) {
             System.out.printf(EVENT_BADGE, badge.getName());
             return;
