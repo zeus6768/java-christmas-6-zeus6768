@@ -1,17 +1,17 @@
 package christmas.domain.eventplanner;
 
-import static christmas.domain.eventbenefit.Event.GIFT;
-import static christmas.domain.eventbenefit.Event.SPECIAL;
-import static christmas.domain.eventbenefit.Event.WEEKDAY;
-import static christmas.domain.eventbenefit.Event.WEEKEND;
-import static christmas.domain.eventbenefit.Event.X_MAS_D_DAY;
+import static christmas.domain.event.Event.GIFT;
+import static christmas.domain.event.Event.SPECIAL;
+import static christmas.domain.event.Event.WEEKDAY;
+import static christmas.domain.event.Event.WEEKEND;
+import static christmas.domain.event.Event.X_MAS_D_DAY;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
 
-import christmas.domain.eventbenefit.Event;
-import christmas.domain.eventbenefit.EventBenefit;
+import christmas.domain.event.Event;
+import christmas.domain.event.EventBenefit;
 
 public class EventPlanResult {
 

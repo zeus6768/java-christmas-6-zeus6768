@@ -1,6 +1,6 @@
-package christmas.domain.eventbenefit;
+package christmas.domain.event;
 
-import static christmas.domain.eventbenefit.EventBenefit.NO_BENEFIT;
+import static christmas.domain.event.EventBenefit.NO_BENEFIT;
 import static christmas.domain.eventplanner.EventCalendar.isSpecialDay;
 import static christmas.domain.eventplanner.EventCalendar.isWeekEnd;
 import static christmas.domain.eventplanner.EventCalendar.isWeekday;

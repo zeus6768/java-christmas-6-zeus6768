@@ -1,13 +1,13 @@
 package christmas.domain.eventplanner;
 
-import static christmas.domain.eventbenefit.Event.GIFT;
-import static christmas.domain.eventbenefit.Event.SPECIAL;
-import static christmas.domain.eventbenefit.Event.WEEKDAY;
-import static christmas.domain.eventbenefit.Event.WEEKEND;
-import static christmas.domain.eventbenefit.Event.X_MAS_D_DAY;
+import static christmas.domain.event.Event.GIFT;
+import static christmas.domain.event.Event.SPECIAL;
+import static christmas.domain.event.Event.WEEKDAY;
+import static christmas.domain.event.Event.WEEKEND;
+import static christmas.domain.event.Event.X_MAS_D_DAY;
 
-import christmas.domain.eventbenefit.EventBadge;
-import christmas.domain.eventbenefit.EventGiftBenefit;
+import christmas.domain.event.EventBadge;
+import christmas.domain.event.EventGiftBenefit;
 
 public class EventPlan {
 

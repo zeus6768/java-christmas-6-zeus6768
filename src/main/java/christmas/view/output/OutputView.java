@@ -1,6 +1,6 @@
 package christmas.view.output;
 
-import static christmas.domain.eventbenefit.EventBadge.NO_BADGE;
+import static christmas.domain.event.EventBadge.NO_BADGE;
 import static christmas.domain.eventplanner.EventCalendar.EVENT_MONTH;
 import static christmas.domain.eventplanner.EventConstant.GIFT_EVENT_QUANTITY;
 import static christmas.view.output.OutputMessage.BENEFIT;
@@ -21,10 +21,10 @@ import static christmas.view.output.OutputMessage.TITLE_TOTAL_BEFORE_DISCOUNT;
 
 import java.util.Map.Entry;
 
-import christmas.domain.eventbenefit.Event;
-import christmas.domain.eventbenefit.EventBadge;
-import christmas.domain.eventbenefit.EventBenefit;
-import christmas.domain.eventbenefit.EventGiftBenefit;
+import christmas.domain.event.Event;
+import christmas.domain.event.EventBadge;
+import christmas.domain.event.EventBenefit;
+import christmas.domain.event.EventGiftBenefit;
 import christmas.domain.eventplanner.EventPlanResult;
 import christmas.domain.eventplanner.Order;
 import christmas.domain.eventplanner.VisitDate;

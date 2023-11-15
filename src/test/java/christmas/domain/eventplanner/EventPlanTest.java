@@ -2,10 +2,10 @@ package christmas.domain.eventplanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import static christmas.domain.eventbenefit.EventBadge.NO_BADGE;
-import static christmas.domain.eventbenefit.EventBadge.SANTA;
-import static christmas.domain.eventbenefit.EventBadge.STAR;
-import static christmas.domain.eventbenefit.EventBadge.TREE;
+import static christmas.domain.event.EventBadge.NO_BADGE;
+import static christmas.domain.event.EventBadge.SANTA;
+import static christmas.domain.event.EventBadge.STAR;
+import static christmas.domain.event.EventBadge.TREE;
 import static christmas.domain.menu.Drink.CHAMPAGNE;
 import static christmas.domain.menu.Menu.NO_MENU;
 
@@ -16,7 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import christmas.domain.eventbenefit.EventBadge;
+import christmas.domain.event.EventBadge;
 import christmas.domain.menu.Menu;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.InputExceptionHandler;
