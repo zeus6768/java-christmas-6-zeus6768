@@ -90,18 +90,18 @@ class InputViewTest extends MyChristmasTest {
         @DisplayName("정상적인 메뉴와 개수를 입력한다.")
         @MethodSource
         @ParameterizedTest
-        void inputOrder(String input, int sum) {
+        void inputOrder(String input) {
             assertSimpleTest(() -> run(input));
         }
 
         private static Stream<Arguments> inputOrder() {
             return Stream.of(
-                    Arguments.of("타파스-2", 2),
-                    Arguments.of("타파스-1,제로콜라-1", 2),
-                    Arguments.of("양송이스프-1,타파스-2,시저샐러드-3", 6),
-                    Arguments.of("티본스테이크-4,바비큐립-3,해산물파스타-2,크리스마스파스타-1", 10),
-                    Arguments.of("초코케이크-2,아이스크림-2", 4),
-                    Arguments.of("제로콜라-1,레드와인-1,샴페인-1", 3)
+                    Arguments.of("타파스-2"),
+                    Arguments.of("타파스-1,제로콜라-1"),
+                    Arguments.of("양송이수프-1,타파스-2,시저샐러드-3"),
+                    Arguments.of("티본스테이크-4,바비큐립-3,해산물파스타-2,크리스마스파스타-1"),
+                    Arguments.of("초코케이크-2,아이스크림-2"),
+                    Arguments.of("제로콜라-1,레드와인-1,샴페인-1")
             );
         }
 
@@ -130,7 +130,7 @@ class InputViewTest extends MyChristmasTest {
         void inputOrderByInvalidFormat() {
             assertSimpleTest(() -> {
                 run("타파스-1-제로콜라-1",
-                        "양송이스프-시저샐러드-1",
+                        "양송이수프-시저샐러드-1",
                         "티본스테이크,바비큐립-1",
                         "초코케이크-1,샴페인--3",
                         "제로콜라,레드와인,샴페인",
@@ -146,7 +146,7 @@ class InputViewTest extends MyChristmasTest {
         @Test
         void inputOrderByExceededMenuCount() {
             assertSimpleTest(() -> {
-                run("타파스-10,제로콜라-10,양송이스프-1,시저샐러드-1",
+                run("타파스-10,제로콜라-10,양송이수프-1,시저샐러드-1",
                         EXIT_INPUT
                 );
                 assertThat(output())
