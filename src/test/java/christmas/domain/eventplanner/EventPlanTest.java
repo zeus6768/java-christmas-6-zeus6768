@@ -30,7 +30,7 @@ class EventPlanTest extends MyChristmasTest {
     @DisplayName("우테코 식당 이벤트 플래너 테스트")
     @MethodSource("testCases")
     @ParameterizedTest
-    void test1(
+    void eventPlanTest(
             String visitDateInput, String orderInput,
             int totalPriceBeforeDiscount,
             Menu gift,
